@@ -1,16 +1,17 @@
 import math
 
+
 def delta_inverse_kinematic(x, y, z):
     # Delta反解 已经实践测量
     # 动平台半径（轴到中心）
-    R = 50 
+    R = 50
     # 静平台半径
     r = 20
     # 主动臂臂长
     L = 275
     # 从动臂臂长
     l = 500
-    
+
     z = -z
     m = x**2 + y**2 + z**2 + (R - r)**2 + L**2 - l**2
     A = [
@@ -34,17 +35,14 @@ def delta_inverse_kinematic(x, y, z):
     return theta1, theta2, theta3
 
 
-import math
-
 def degrees(rad):
     return rad * 180 / math.pi
 
-def test_delta_inverse_kinematic():
+
+if __name__ == "__main__":
     # 测试数据
     test_cases = [
-        
         (0, 0, 765)
-        
     ]
 
     for x, y, z in test_cases:
@@ -56,5 +54,3 @@ def test_delta_inverse_kinematic():
         print(f"Input: ({x}, {y}, {z})")
         print(f"Output: theta1={theta1_deg}°, theta2={theta2_deg}°, theta3={theta3_deg}°")
         print("------------------------------")
-
-test_delta_inverse_kinematic()
